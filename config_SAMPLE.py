@@ -1,0 +1,12 @@
+REPORT_NAME     = 'system.domain.name'
+INDEX_HTML      = './index.html'
+DMRLINK_HTML    = './dmrlink_stats.html'
+CONFBRIDGE_HTML = './confbridge_stats.html'
+CONFIG_INC      = True
+CONFIG          = {}
+CONFIG_RX       = ''
+BRIDGES_INC     = True
+BRIDGES         = {}
+BRIDGES_RX      = ''
+SERVER_PORT     = 4321
+FREQUENCY       = 10
