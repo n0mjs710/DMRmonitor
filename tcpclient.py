@@ -1,29 +1,20 @@
 from __future__ import print_function
 
+import logging
+
 from twisted.internet.protocol import ReconnectingClientFactory, Protocol
 from twisted.protocols.basic import NetstringReceiver
-
 from twisted.internet import reactor, task
 
 from pprint import pprint
 from time import time, strftime, localtime
-#from hmac import new as hmac_new
-from hashlib import sha1
 from cPickle import loads
 from binascii import b2a_hex as h
 from dmr_utils.utils import int_id, get_alias
 from os.path import getmtime 
 
-from pprint import pprint
+from config import *
 
-DMRLINK_HTML    = '../dmrlink_stats.html'
-CONFBRIDGE_HTML = '../confbridge_stats.html'
-CONFIG = {}
-CONFIG_RX = ''
-BRIDGES = {}
-BRIDGES_RX = ''
-SERVER_PORT = 4321
-FREQUENCY = 10
 OPCODE = {
     'CONFIG_REQ': '\x00',
     'CONFIG_SND': '\x01',
@@ -35,20 +26,35 @@ OPCODE = {
     'BRDG_EVENT': '\x07'
     }
 
+
 def write_file(_file, _data):
     try:
         with open(_file, 'w') as file:
             file.write(_data)
             file.close()
     except IOError as detail:
-        print('I/O Error: {}'.format(detail))
+        logging.error('I/O Error: {}'.format(detail))
     except EOFError:
-        print('EOFError')
+        logging.error('EOFError')
 
+
+def mk_index():
+    from index_template import HTML
+    
+    html = HTML['HEAD'].format(REPORT_NAME)
+    if CONFIG_INC:
+        html += HTML['DMRLINK']
+    if BRIDGES_INC:
+        html += HTML['CONFBRIDGE']
+    html += HTML['FOOT']
+    
+    return html
+    
+    
 def build_dmrlink_table():
     _cnow = strftime('%Y-%m-%d %H:%M:%S', localtime(time()))
-    table =  'Table Last Updated: {} <br>'.format(_cnow)
-    table += 'Data Last Updated: {} <br>'.format(CONFIG_RX)
+    table =  '<p>Table Last Updated: {} <br>'.format(_cnow)
+    table += 'Data Last Updated: {}</p>'.format(CONFIG_RX)
 
     table += '<style>table, td, th {border: .5px solid black; padding: 2px; border-collapse: collapse}</style>'
     
@@ -114,14 +120,13 @@ def build_dmrlink_table():
         table += '</table><br>'
     return table
 
+
 def build_bridge_table():
     _now = time()
     _cnow = strftime('%Y-%m-%d %H:%M:%S', localtime(_now))
         
-    table =  'Table Last Updated: {}<br>'.format(_cnow)
-    table += 'Data Last Updated: {}<br>'.format(BRIDGES_RX)
-    
-    #style="font: 10pt arial, sans-serif;"
+    table =  '<p>Table Last Updated: {}<br>'.format(_cnow)
+    table += 'Data Last Updated: {}</p>'.format(BRIDGES_RX)
     
     for bridge in BRIDGES:
         table += '<style>table, td, th {border: .5px solid black; padding: 2px; border-collapse: collapse}</style>'
@@ -189,7 +194,8 @@ def build_bridge_table():
 
         table += '</table><br>'
     return table
-        
+
+ 
 def build_stats():
     if CONFIG:
         table = build_dmrlink_table()
@@ -197,27 +203,30 @@ def build_stats():
     if BRIDGES:
         table = build_bridge_table()
         write_file(CONFBRIDGE_HTML, table)
+ 
          
 def process_message(_message):
     global CONFIG, BRIDGES, CONFIG_RX, BRIDGES_RX
     opcode = _message[:1]
     if opcode == OPCODE['CONFIG_SND']:
-        print('got CONFIG_SND opcode')
+        logging.debug('got CONFIG_SND opcode')
         CONFIG = load_dictionary(_message)
         CONFIG_RX = strftime('%Y-%m-%d %H:%M:%S', localtime(time()))
     elif opcode == OPCODE['BRIDGE_SND']:
-        print('got BRIDGE_SND opcode')
+        logging.debug('got BRIDGE_SND opcode')
         BRIDGES = load_dictionary(_message)
         BRIDGES_RX = strftime('%Y-%m-%d %H:%M:%S', localtime(time()))
     elif opcode == OPCODE['LINK_EVENT']:
-        print('LINK_EVENT Received: {}'.format(repr(_message[1:])))
+        logging.debug('LINK_EVENT Received: {}'.format(repr(_message[1:])))
     else:
-        print('got unknown opcode: {}, message: {}'.format(repr(opcode), repr(_message[1:])))
-    
+        logging.debug('got unknown opcode: {}, message: {}'.format(repr(opcode), repr(_message[1:])))
+
+
 def load_dictionary(_message):
     data = _message[1:]
     return loads(data)
-    print('Successfully decoded dictionary')
+    logging.debug('Successfully decoded dictionary')
+
 
 class report(NetstringReceiver):
     def __init__(self):
@@ -225,7 +234,6 @@ class report(NetstringReceiver):
 
     def connectionMade(self):
         pass
-        #self.sendString(OPCODE['CONFIG_REQ'])
 
     def connectionLost(self, reason):
         pass
@@ -233,29 +241,35 @@ class report(NetstringReceiver):
     def stringReceived(self, data):
         process_message(data)
 
+
 class reportClientFactory(ReconnectingClientFactory):
     def __init__(self):
         pass
         
     def startedConnecting(self, connector):
-        print('Initiating Connection to Server.')
+        logging.info('Initiating Connection to Server.')
 
     def buildProtocol(self, addr):
-        print('Connected.')
-        print('Resetting reconnection delay')
+        logging.info('Connected.')
+        logging.info('Resetting reconnection delay')
         self.resetDelay()
         return report()
 
     def clientConnectionLost(self, connector, reason):
-        print('Lost connection.  Reason:', reason)
+        logging.info('Lost connection.  Reason: %s', reason)
         ReconnectingClientFactory.clientConnectionLost(self, connector, reason)
 
     def clientConnectionFailed(self, connector, reason):
-        print('Connection failed. Reason:', reason)
+        logging.info('Connection failed. Reason: %s', reason)
         ReconnectingClientFactory.clientConnectionFailed(self, connector, reason)
 
 
 if __name__ == '__main__':
+    logging.basicConfig(level=logging.DEBUG)
+    
+    index_html = mk_index()
+    write_file(INDEX_HTML, index_html)
+    
     update_stats = task.LoopingCall(build_stats)
     update_stats.start(FREQUENCY)
     reactor.connectTCP('127.0.0.1', 4321, reportClientFactory())
