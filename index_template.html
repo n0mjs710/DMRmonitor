@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <script type="text/javascript">
+         var sock = null;
+         var ellog = null;
+         
+         window.onload = function() {
+            var wsuri;
+            
+            ellog = document.getElementById('log');
+            dmrlink_table = document.getElementById('dmrlink');
+            confbridge_table = document.getElementById('bridge');
+            
+            wsuri = "ws://" + window.location.hostname + ":9000";
+
+            
+            if ("WebSocket" in window) {
+               sock = new WebSocket(wsuri);
+            } else if ("MozWebSocket" in window) {
+               sock = new MozWebSocket(wsuri);
+            } else {
+               log("Browser does not support WebSocket!");
+            }
+            
+            if (sock) {
+               sock.onopen = function() {
+                  log("Connected to " + wsuri);
+               }
+               sock.onclose = function(e) {
+                  log("Connection closed (wasClean = " + e.wasClean + ", code = " + e.code + ", reason = '" + e.reason + "')");
+                  dmrlink_table.innerHTML = "";
+                  confbridge_table.innerHTML = "";
+                  sock = null;
+               }
+               sock.onmessage = function(e) {
+                   var opcode = e.data.slice(0,1);
+                   var message = e.data.slice(1);
+                   if (opcode == "d") {
+                       dmrlink(message);
+                   } else if (opcode == "b") {
+                       confbridge(message);
+                   } else if (opcode == "l") {
+                       log(message);
+                   } else if (opcode == "q") {
+                       log(message);
+                       dmrlink_table.innerHTML = "";
+                       confbridge_table.innerHTML = "";
+                   } else {
+                       log("Unknown Message Received: " + message);
+                   }
+               }
+            }
+         };
+         
+         function dmrlink(_msg) {
+             dmrlink_table.innerHTML = _msg;
+         };
+         
+         function confbridge(_msg) {
+             confbridge_table.innerHTML = _msg;
+         };
+         
+         function log(_msg) {
+            ellog.innerHTML += _msg + '\n';
+            ellog.scrollTop = ellog.scrollHeight;
+         };
+         
+      </script>
+   </head>
+    <body style="font: 10pt arial, sans-serif">
+         <h1><center>DMRlink Monitoring Server</center></h1>
+         <hr>
+         <noscript>You must enable JavaScript</noscript>
+         <p id="dmrlink"></p>
+         <p id="bridge"></p>
+         <hr>
+         <p>Events:</p>
+         <pre id="log" style="height: 10em; overflow-y: scroll; background-color: #ccc;"></pre>
+    </body>
+</html>
