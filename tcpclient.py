@@ -95,11 +95,11 @@ def build_dmrlink_table():
         table += '<table style="width:90%; font: 10pt arial, sans-serif">'
         
         table += '<colgroup>\
-            <col style="width: 35%" />\
+            <col style="width: 30%" />\
             <col style="width: 15%" />\
             <col style="width: 15%" />\
             <col style="width: 15%" />\
-            <col style="width: 5%" />\
+            <col style="width: 10%" />\
             <col style="width: 5%" />\
             <col style="width: 5%" />\
             <col style="width: 5%" />\
