@@ -150,7 +150,6 @@ def build_dmrlink_table():
             for peer in CONFIG[ipsc]['PEERS']:
                 stat = CONFIG[ipsc]['PEERS'][peer]['STATUS']
                 
-                logging.info('peer status: {}'.format(repr(stat['CONNECTED'])))
                 if stat['CONNECTED'] == True:
                     active = '<td bgcolor="#00FF00">Connected</td>'
                 elif stat['CONNECTED'] == False:
@@ -161,7 +160,7 @@ def build_dmrlink_table():
                         get_alias(peer, peer_ids),\
                         str(int_id(peer)).rjust(8,'0'),\
                         CONFIG[ipsc]['PEERS'][peer]['IP'],\
-                        active,\
+                        repr(stat['CONNECTED']),\
                         stat['KEEP_ALIVES_SENT'],\
                         stat['KEEP_ALIVES_RECEIVED'],\
                         stat['KEEP_ALIVES_MISSED'])
