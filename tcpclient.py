@@ -93,11 +93,6 @@ def build_dmrlink_table():
         stat = CONFIG[ipsc]['MASTER']['STATUS']
         master = CONFIG[ipsc]['LOCAL']['MASTER_PEER']
         
-        if stat['CONNECTED'] == True:
-            active = '<td bgcolor="#00FF00">Connected</td>'
-        elif stat['CONNECTED'] == False:
-            active = '<td bgcolor="#FF0000">Disconnected</td>'
-        
         table += '<table style="width:90%; font: 10pt arial, sans-serif">'
         
         table += '<colgroup>\
@@ -125,6 +120,11 @@ def build_dmrlink_table():
                       <th rowspan="2">Status</th>\
                       <th colspan="3">Keep Alives</th></tr>\
                   <tr><th>Sent</th><th>Received</th><th>Missed</th></tr>'
+        
+        if stat['CONNECTED'] == True:
+            active = '<td bgcolor="#00FF00">Connected</td>'
+        elif stat['CONNECTED'] == False:
+            active = '<td bgcolor="#FF0000">Disconnected</td>'
                 
         if not master:
             table += '<tr><td>{}</td><td>Master</td><td>{}</td><td>{}</td>{}<td>{}</td><td>{}</td><td>{}</td></tr>'.format(\
@@ -149,6 +149,12 @@ def build_dmrlink_table():
         else:
             for peer in CONFIG[ipsc]['PEERS']:
                 stat = CONFIG[ipsc]['PEERS'][peer]['STATUS']
+                
+                if stat['CONNECTED'] == True:
+                    active = '<td bgcolor="#00FF00">Connected</td>'
+                elif stat['CONNECTED'] == False:
+                    active = '<td bgcolor="#FF0000">Disconnected</td>'
+                
                 if peer != CONFIG[ipsc]['LOCAL']['RADIO_ID']:
                     table += '<tr><td>{}</td><td>Peer</td><td>{}</td><td>{}</td>{}<td>{}</td><td>{}</td><td>{}</td></tr>'.format(\
                         get_alias(peer, peer_ids),\
