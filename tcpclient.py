@@ -127,7 +127,7 @@ def build_dmrlink_table():
                   <tr><th>Sent</th><th>Received</th><th>Missed</th></tr>'
                 
         if not master:
-            table += '<tr><td>{}</td><td>Master</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr>'.format(\
+            table += '<tr><td>{}</td><td>Master</td><td>{}</td><td>{}</td>{}<td>{}</td><td>{}</td><td>{}</td></tr>'.format(\
                     get_alias(CONFIG[ipsc]['MASTER']['RADIO_ID'], peer_ids),\
                     str(int_id(CONFIG[ipsc]['MASTER']['RADIO_ID'])).rjust(8,'0'),\
                     CONFIG[ipsc]['MASTER']['IP'],\
@@ -139,7 +139,7 @@ def build_dmrlink_table():
         if master:
             for peer in CONFIG[ipsc]['PEERS']:
                 stat = CONFIG[ipsc]['PEERS'][peer]['STATUS']
-                table += '<tr><td>{}</td><td>Peer</td><td>{}</td><td>{}</td><td>{}</td><td>n/a</td><td>{}</td><td>n/a</td></tr>'.format(\
+                table += '<tr><td>{}</td><td>Peer</td><td>{}</td><td>{}</td>{}<td>n/a</td><td>{}</td><td>n/a</td></tr>'.format(\
                     get_alias(peer, peer_ids),\
                     str(int_id(peer)).rjust(8,'0'),\
                     CONFIG[ipsc]['PEERS'][peer]['IP'],\
@@ -150,7 +150,7 @@ def build_dmrlink_table():
             for peer in CONFIG[ipsc]['PEERS']:
                 stat = CONFIG[ipsc]['PEERS'][peer]['STATUS']
                 if peer != CONFIG[ipsc]['LOCAL']['RADIO_ID']:
-                    table += '<tr><td>{}</td><td>Peer</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr>'.format(\
+                    table += '<tr><td>{}</td><td>Peer</td><td>{}</td><td>{}</td>{}<td>{}</td><td>{}</td><td>{}</td></tr>'.format(\
                         get_alias(peer, peer_ids),\
                         str(int_id(peer)).rjust(8,'0'),\
                         CONFIG[ipsc]['PEERS'][peer]['IP'],\
