@@ -90,7 +90,6 @@ def build_dmrlink_table():
     table += '<style>table, td, th {border: .5px solid black; padding: 2px; border-collapse: collapse}</style>'
     
     for ipsc in CONFIG:
-        stat = CONFIG[ipsc]['MASTER']['STATUS']
         master = CONFIG[ipsc]['LOCAL']['MASTER_PEER']
         
         table += '<table style="width:90%; font: 10pt arial, sans-serif">'
@@ -120,13 +119,15 @@ def build_dmrlink_table():
                       <th rowspan="2">Status</th>\
                       <th colspan="3">Keep Alives</th></tr>\
                   <tr><th>Sent</th><th>Received</th><th>Missed</th></tr>'
-        
-        if stat['CONNECTED'] == True:
-            active = '<td bgcolor="#00FF00">Connected</td>'
-        elif stat['CONNECTED'] == False:
-            active = '<td bgcolor="#FF0000">Disconnected</td>'
                 
         if not master:
+            stat = CONFIG[ipsc]['MASTER']['STATUS']
+            
+            if stat['CONNECTED'] == True:
+                active = '<td bgcolor="#00FF00">Connected</td>'
+            elif stat['CONNECTED'] == False:
+                active = '<td bgcolor="#FF0000">Disconnected</td>'
+            
             table += '<tr><td>{}</td><td>Master</td><td>{}</td><td>{}</td>{}<td>{}</td><td>{}</td><td>{}</td></tr>'.format(\
                     get_alias(CONFIG[ipsc]['MASTER']['RADIO_ID'], peer_ids),\
                     str(int_id(CONFIG[ipsc]['MASTER']['RADIO_ID'])).rjust(8,'0'),\
@@ -139,6 +140,12 @@ def build_dmrlink_table():
         if master:
             for peer in CONFIG[ipsc]['PEERS']:
                 stat = CONFIG[ipsc]['PEERS'][peer]['STATUS']
+                
+                if stat['CONNECTED'] == True:
+                    active = '<td bgcolor="#00FF00">Connected</td>'
+                elif stat['CONNECTED'] == False:
+                    active = '<td bgcolor="#FF0000">Disconnected</td>'
+                
                 table += '<tr><td>{}</td><td>Peer</td><td>{}</td><td>{}</td>{}<td>n/a</td><td>{}</td><td>n/a</td></tr>'.format(\
                     get_alias(peer, peer_ids),\
                     str(int_id(peer)).rjust(8,'0'),\
@@ -160,7 +167,7 @@ def build_dmrlink_table():
                         get_alias(peer, peer_ids),\
                         str(int_id(peer)).rjust(8,'0'),\
                         CONFIG[ipsc]['PEERS'][peer]['IP'],\
-                        repr(stat['CONNECTED']),\
+                        active,\
                         stat['KEEP_ALIVES_SENT'],\
                         stat['KEEP_ALIVES_RECEIVED'],\
                         stat['KEEP_ALIVES_MISSED'])
