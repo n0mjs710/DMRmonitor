@@ -16,7 +16,7 @@ from pprint import pprint
 from time import time, strftime, localtime
 from cPickle import loads
 from binascii import b2a_hex as h
-from dmr_utils.utils import int_id, get_alias, try_download, mk_id_dict, get_alias_list
+from dmr_utils.utils import int_id, get_alias, try_download, mk_id_dict
 from os.path import getmtime
 
 from config import *
