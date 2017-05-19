@@ -414,6 +414,16 @@ class web_server(Resource):
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
     
+    PEER_URL = 'http://www.dmr-marc.net/cgi-bin/trbo-database/datadump.cgi?table=repeaters&format=csv&header=0'
+    SUBSCRIBER_URL = 'http://www.dmr-marc.net/cgi-bin/trbo-database/datadump.cgi?table=users&format=csv&header=0'
+    
+    # Download alias files
+    result = try_download('./', 'peer_ids.csv', PEER_URL, (7 * 86400))
+    logging.info(result)
+   
+    result = try_download('./', 'subscriber_ids.csv', SUBSCRIBER_URL, (7 * 86400))
+    logging.info(result)
+    
     # Make Alias Dictionaries
     peer_ids = mk_id_dict(PATH, PEER_FILE)
     if peer_ids:
