@@ -1,12 +1,18 @@
-REPORT_NAME     = 'system.domain.name'
-INDEX_HTML      = './index.html'
-DMRLINK_HTML    = './dmrlink_stats.html'
-CONFBRIDGE_HTML = './confbridge_stats.html'
-CONFIG_INC      = True
-CONFIG          = {}
-CONFIG_RX       = ''
-BRIDGES_INC     = True
-BRIDGES         = {}
-BRIDGES_RX      = ''
-SERVER_PORT     = 4321
-FREQUENCY       = 10
+REPORT_NAME     = 'system.domain.name'  # Name of the monitored DMRlink system
+CONFIG_INC      = True                  # Include DMRlink stats
+BRIDGES_INC     = True                  # Include Bridge stats (confbrige.py)
+DMRLINK_IP      = '127.0.0.1'           # DMRlink's IP Address
+DMRLINK_PORT    = 4321                  # DMRlink's TCP reporting socket
+FREQUENCY       = 10                    # Frequency to push updates to web clients
+WEB_SERVER_PORT = 8080                  # Has to be above 1024 if you're not running as root
+
+# Files and stuff for loading alias files for mapping numbers to names
+PATH            = './'
+PEER_FILE       = 'peer_ids.csv'                # Will auto-download from DMR-MARC
+SUBSCRIBER_FILE = 'subscriber_ids.csv'          # Will auto-download from DMR-MARC
+TGID_FILE       = 'talkgroup_ids.csv'           # User provided, should be in "integer TGID, TGID name" format
+LOCAL_SUB_FILE  = 'local_subscriber_ids.csv'    # User provided (optional, leave '' if you don't use it), follow the format of DMR-MARC
+LOCAL_PEER_FILE = 'local_peer_ids.csv'          # User provided (optional, leave '' if you don't use it), follow the format of DMR-MARC
+FILE_RELOAD     = 7                             # Number of days before we reload DMR-MARC database files
+PEER_URL        = 'http://www.dmr-marc.net/cgi-bin/trbo-database/datadump.cgi?table=repeaters&format=csv&header=0'
+SUBSCRIBER_URL  = 'http://www.dmr-marc.net/cgi-bin/trbo-database/datadump.cgi?table=users&format=csv&header=0'

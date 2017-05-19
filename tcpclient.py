@@ -1,8 +1,10 @@
 from __future__ import print_function
 
+# Standard modules 
 import logging
 import sys
 
+# Twisted modules
 from twisted.internet.protocol import ReconnectingClientFactory, Protocol
 from twisted.protocols.basic import NetstringReceiver
 from twisted.internet import reactor, task
@@ -10,18 +12,24 @@ from twisted.web.server import Site
 from twisted.web.static import File
 from twisted.web.resource import Resource
 
+# Autobahn provides websocket service under Twisted
 from autobahn.twisted.websocket import WebSocketServerProtocol, WebSocketServerFactory
 
+# Specific functions to import from standard modules
 from pprint import pprint
 from time import time, strftime, localtime
 from cPickle import loads
 from binascii import b2a_hex as h
-from dmr_utils.utils import int_id, get_alias, try_download, mk_id_dict
 from os.path import getmtime
 
+# Utilities from K0USY Group sister project
+from dmr_utils.utils import int_id, get_alias, try_download, mk_full_id_dict
+
+# Configuration variables and IPSC constants
 from config import *
 from ipsc_const import *
 
+# Opcodes for reporting protocol to DMRlink
 OPCODE = {
     'CONFIG_REQ': '\x00',
     'CONFIG_SND': '\x01',
@@ -34,11 +42,24 @@ OPCODE = {
     'RCM_SND':    '\x08'
     }
 
+# Global Variables:
+CONFIG      = {}
+BRIDGES     = {}
+BRIDGES_RX  = ''
+CONFIG_RX   = ''
 
+# For importing HTML templates
 def get_template(_file):
     with open(_file, 'r') as html:
         return html.read()
 
+# Alias string processor
+def alias_string(_id, _dict):
+    alias = get_alias(_id, _dict, 'CALLSIGN', 'CITY', 'STATE')
+    if type(alias) == list:
+        return ', '.join(alias)
+    else:
+        return alias
 #
 # REPEATER CALL MONITOR (RCM) PACKET PROCESSING
 #
@@ -84,7 +105,8 @@ def call_mon_nack(self, _payload):
 #    
 def build_dmrlink_table():
     _cnow = strftime('%Y-%m-%d %H:%M:%S', localtime(time()))
-    table =  '<p>Table Last Updated: {} <br>'.format(_cnow)
+    table =  '<h3>IPSC Systems Status Tables</h3>'
+    table += '<p>Table Last Updated: {} <br>'.format(_cnow)
     table += 'Data Last Updated: {}</p>'.format(CONFIG_RX)
 
     table += '<style>table, td, th {border: .5px solid black; padding: 2px; border-collapse: collapse}</style>'
@@ -105,11 +127,11 @@ def build_dmrlink_table():
             <col style="width: 5%" />\
             </colgroup>'
         
-        table += '<caption>{} '.format(ipsc)
+        table += '<caption>IPSC System: <b>{}</b><br>'.format(ipsc)
         if master:
-            table += '(master)'
+            table += 'DMRlink is the system Master'
         else:
-            table += '(peer)'
+            table += 'DMRlink is a system Peer'
         table +='</caption>'
         
         table += '<tr><th rowspan="2">Alias</th>\
@@ -128,10 +150,8 @@ def build_dmrlink_table():
             elif stat['CONNECTED'] == False:
                 active = '<td bgcolor="#FF0000">Disconnected</td>'
                 
-            alias = get_alias(CONFIG[ipsc]['MASTER']['RADIO_ID'], peer_ids)
-            
             table += '<tr><td>{}</td><td>Master</td><td>{}</td><td>{}</td>{}<td>{}</td><td>{}</td><td>{}</td></tr>'.format(\
-                    alias,\
+                    alias_string(CONFIG[ipsc]['MASTER']['RADIO_ID'], peer_ids),\
                     str(int_id(CONFIG[ipsc]['MASTER']['RADIO_ID'])).rjust(8,'0'),\
                     CONFIG[ipsc]['MASTER']['IP'],\
                     active,\
@@ -148,10 +168,8 @@ def build_dmrlink_table():
                 elif stat['CONNECTED'] == False:
                     active = '<td bgcolor="#FF0000">Disconnected</td>'
                 
-                alias = get_alias(peer, peer_ids)
-                
                 table += '<tr><td>{}</td><td>Peer</td><td>{}</td><td>{}</td>{}<td>n/a</td><td>{}</td><td>n/a</td></tr>'.format(\
-                    alias,\
+                    alias_string(peer, peer_ids),\
                     str(int_id(peer)).rjust(8,'0'),\
                     CONFIG[ipsc]['PEERS'][peer]['IP'],\
                     active,\
@@ -165,12 +183,10 @@ def build_dmrlink_table():
                     active = '<td bgcolor="#00FF00">Connected</td>'
                 elif stat['CONNECTED'] == False:
                     active = '<td bgcolor="#FF0000">Disconnected</td>'
-                
-                alias = get_alias(peer, peer_ids)
-                
+
                 if peer != CONFIG[ipsc]['LOCAL']['RADIO_ID']:
                     table += '<tr><td>{}</td><td>Peer</td><td>{}</td><td>{}</td>{}<td>{}</td><td>{}</td><td>{}</td></tr>'.format(\
-                        alias,\
+                        alias_string(peer, peer_ids),\
                         str(int_id(peer)).rjust(8,'0'),\
                         CONFIG[ipsc]['PEERS'][peer]['IP'],\
                         active,\
@@ -187,8 +203,9 @@ def build_dmrlink_table():
 def build_bridge_table():
     _now = time()
     _cnow = strftime('%Y-%m-%d %H:%M:%S', localtime(_now))
-        
-    table =  '<p>Table Last Updated: {}<br>'.format(_cnow)
+
+    table =  '<h3>Bridge Group Status Tables</h3>'
+    table +=  '<p>Table Last Updated: {}<br>'.format(_cnow)
     table += 'Data Last Updated: {}</p>'.format(BRIDGES_RX)
     
     for bridge in BRIDGES:
@@ -259,7 +276,8 @@ def build_bridge_table():
     return table
 
 #
-# BUILD DMRLINK AND CONFBRIDGE TABLES FROM CONFIG/BRIDGES DICTS - THIS IS A TIMED CALL
+# BUILD DMRLINK AND CONFBRIDGE TABLES FROM CONFIG/BRIDGES DICTS
+#          THIS CURRENTLY IS A TIMED CALL
 #
 def build_stats():
     if CONFIG:
@@ -410,37 +428,39 @@ class web_server(Resource):
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
     
-    PEER_URL = 'http://www.dmr-marc.net/cgi-bin/trbo-database/datadump.cgi?table=repeaters&format=csv&header=0'
-    SUBSCRIBER_URL = 'http://www.dmr-marc.net/cgi-bin/trbo-database/datadump.cgi?table=users&format=csv&header=0'
-    
     # Download alias files
-    result = try_download('./', 'peer_ids.csv', PEER_URL, (7 * 86400))
+    result = try_download('./', 'peer_ids.csv', PEER_URL, (FILE_RELOAD * 86400))
     logging.info(result)
    
-    result = try_download('./', 'subscriber_ids.csv', SUBSCRIBER_URL, (7 * 86400))
+    result = try_download('./', 'subscriber_ids.csv', SUBSCRIBER_URL, (FILE_RELOAD * 86400))
     logging.info(result)
     
     # Make Alias Dictionaries
-    peer_ids = mk_id_dict(PATH, PEER_FILE)
+    peer_ids = mk_full_id_dict(PATH, PEER_FILE, 'peer')
     if peer_ids:
         logging.info('ID ALIAS MAPPER: peer_ids dictionary is available')
         
-    subscriber_ids = mk_id_dict(PATH, SUBSCRIBER_FILE)
+    subscriber_ids = mk_full_id_dict(PATH, SUBSCRIBER_FILE, 'subscriber')
     if subscriber_ids:
         logging.info('ID ALIAS MAPPER: subscriber_ids dictionary is available')
     
-    talkgroup_ids = mk_id_dict(PATH, TGID_FILE)
+    talkgroup_ids = mk_full_id_dict(PATH, TGID_FILE, 'tgid')
     if talkgroup_ids:
         logging.info('ID ALIAS MAPPER: talkgroup_ids dictionary is available')
     
-    local_ids = mk_id_dict(PATH, LOCAL_FILE)
-    if local_ids:
-        logging.info('ID ALIAS MAPPER: local_ids dictionary is available')
-        peer_ids.update(local_ids)
+    local_subscriber_ids = mk_full_id_dict(PATH, LOCAL_SUB_FILE, 'subscriber')
+    if local_subscriber_ids:
+        logging.info('ID ALIAS MAPPER: local_subscriber_ids added to subscriber_ids dictionary')
         subscriber_ids.update(local_ids)
+        
+    local_peer_ids = mk_full_id_dict(PATH, LOCAL_PEER_FILE, 'subscriber')
+    if local_peer_ids:
+        logging.info('ID ALIAS MAPPER: local_peer_ids added peer_ids dictionary')
+        peer_ids.update(local_ids)
     
     # Create Static Website index file
     index_html = get_template('index_template.html')
+    index_html = index_html.replace('<<<system_name>>>', REPORT_NAME)
     
     # Start update loop
     update_stats = task.LoopingCall(build_stats)

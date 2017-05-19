@@ -494,6 +494,7 @@
 1106495,WB6R,Dennis C Nichols,Bonita,California,United States,DMR<br/>
 1106496,KK6WWW,Brian J Miller,Lake Forest,California,United States,DMR<br/>
 1106497,WT6H,Mike Ferreira,Morgan Hill,California,United States,DMR<br/>
+1106498,WT6H,Mike Ferreira,Gilroy,California,United States,DMR<br/>
 1108001,KE0HFH,Michael J Vespoli,Littleton,Colorado,United States,DMR<br/>
 1108002,KE0CBT,Andrew Pargeter Pargeter,Longmont,Colorado,United States,DMR<br/>
 1108003,K0ETR,Earl Roper,Denver,Colorado,United States,DMR<br/>
@@ -639,6 +640,8 @@
 1108145,KE0HAO,John C Johnson,Denver,Colorado,United States,DMR<br/>
 1108146,N0OUW,Gerald D Schmidt,Longmont,Colorado,United States,DMR<br/>
 1108147,N6UA,Douglas B Tabor,Estes Park,Colorado,United States,DMR<br/>
+1108148,N0DNB,James E Mc Daniel,Loveland,Colorado,United States,DMR<br/>
+1108149,KD0QWA,Gregory D Oldham,Peyton,Colorado,United States,DMR<br/>
 1112001,KI4ZWE,Bobby W Brown,Hollywood,Florida,United States,DMR<br/>
 1112002,WA4ECT,Michael A Seay,Titusville,Florida,United States,DMR<br/>
 1112003,PU2TAW,Agnaldo Alves,Florida,Florida,United States,CCS7<br/>
@@ -1798,6 +1801,9 @@
 1126175,KD8TTH,Terry L Sauers,Flushing,Michigan,United States,DMR<br/>
 1126176,N8NBZ,Michael D Baird,Carson,Michigan,United States,DMR<br/>
 1126178,KD8ZXZ,Jacob Ordway,Alpena, Mi,Michigan,United States,DMR<br/>
+1126179,K8DXX,William J Roberts,Troy,Michigan,United States,DMR<br/>
+1126180,N8ZMT,John A Schafer,Pewamo,Michigan,United States,DMR<br/>
+1126181,KC8FYW,Denise M Schafer,Pewamo,Michigan,United States,DMR<br/>
 1136001,K2FPC,Antonio Lipari,Champlain,New York,United States,DMR<br/>
 1136002,KB2JM,James S Meahl,Lockport,New York,United States,DMR<br/>
 1136003,K2BRT,Paul Polischuk,New Windsor,New York,United States,DMR<br/>
@@ -2269,6 +2275,7 @@
 1136472,N2REG,Rafael Geraldo,Bronx,New York,United States,DMR<br/>
 1136473,N1JUX ,Kevin G King,Oswego,New York,United States,DMR<br/>
 1136475,W2LA,Keith M Smith,Hicksville,New York,United States,DMR<br/>
+1136476,N2HVR,Nicholas Palmeri Palmeri,Ozone Park,New York,United States,DMR<br/>
 1137001,K4SWL,Thomas H Witherspoon,Swannanoa,North Carolina,United States,DMR<br/>
 1137002,KK4RKU,Glenn A Allison,Canton,North Carolina,United States,DMR<br/>
 1137003,KM4IOU,Marty D Bumgarner,Granite Falls,North Carolina,United States,DMR<br/>
@@ -2881,6 +2888,7 @@
 1137618,N4HAL,William P Kelly,Swannanoa,North Carolina,United States,DMR<br/>
 1137619,KV4SF,Brandelyne Lewis,Mooresville,North Carolina,United States,DMR<br/>
 1137620,W2ZDP,Wayne M Carpus,Clinton,North Carolina,United States,DMR<br/>
+1137621,KS4LJ,Robert B Rider,Rockwell,North Carolina,United States,DMR<br/>
 1139001,N8TFD,Steven A Lewis,Cincinnati,Ohio,United States,DMR<br/>
 1139002,NE8X,Matthew G Flagler,Cincinnati,Ohio,United States,DMR<br/>
 1139003,N3VGX,Martin A Wheeler,Swanton,Ohio,United States,DMR<br/>
@@ -3253,6 +3261,8 @@
 1139372,K8DMB,David M Baker,Cincinnati,Ohio,United States,DMR<br/>
 1139373,KD8ORN,Scot  Freeman,Logan,Ohio,United States,DMR<br/>
 1139374,KE8BJA,Ben Nau,Valley City,Ohio,United States,DMR<br/>
+1139375,K8LAA,Lee A Agness,Paulding,Ohio,United States,DMR<br/>
+1139376,K1MDM,Mark D Myers,Marysville,Ohio,United States,DMR<br/>
 1148001,KG5OKB,Stephen Easley Easley,Crockett,Texas,United States,DMR<br/>
 1148002,N0WFU,Timothy M Jackson,Austin,Texas,United States,DMR<br/>
 1148003,K5VPW,Jim Finney Finney,San Antonio,Texas,United States,DMR<br/>
@@ -10794,6 +10804,7 @@
 2222672,IZ2KTJ,Massimiliano ,,,Italy,<br/>
 2222673,IW2JFU,GIANLUCA ,,,Italy,<br/>
 2222674,IK2DOK,Walter ,,,Italy,<br/>
+2222675,I2CUD,Alberto ,,,Italy,<br/>
 2223001,IW3SRH,Stefano ,,,Italy,Portable<br/>
 2223002,IV3DVE,Corrado ,,,Italy,Portable<br/>
 2223003,IV3FHS,Antonio ,,,Italy,Portable<br/>
@@ -12737,6 +12748,7 @@
 2229148,IT9GWH,Ignazio ,,,Italy,<br/>
 2229149,IT9GXH,Stefano ,,,Italy,<br/>
 2229150,IT9CLU,Salvo ,,,Italy,<br/>
+2229151,IT9VJO,Tullio ,,,Italy,<br/>
 2261001,YO3GTS,Dan ,,,Romania,Mobile<br/>
 2262001,YO2LOJ,Marius ,,,Romania,<br/>
 2262002,YO2LIC,Vali ,,,Romania,<br/>
@@ -17390,6 +17402,10 @@
 2343463,G1XCK,William ,,,United Kingdom,<br/>
 2343464,MB6CE,Joel ,,,United Kingdom,<br/>
 2343465,M0GAX,Craig ,,,United Kingdom,<br/>
+2343467,G7UCP,David ,,,United Kingdom,<br/>
+2343468,M6JYB,JASON ,,,United Kingdom,<br/>
+2343469,M0IGT,Brian ,,,United Kingdom,<br/>
+2343470,G0GFQ,Keith ,,,United Kingdom,<br/>
 2351001,G0PRF,John ,,,United Kingdom,Portable<br/>
 2351002,G0PRF,John Goodwin ,,,United Kingdom,Mobile<br/>
 2351003,G7LWT,Darren ,,,United Kingdom,Portable #1<br/>
@@ -19916,6 +19932,7 @@
 2354252,GM0CSN,Robert ,,,United Kingdom,<br/>
 2354253,GM3KXQ,Stan ,,,United Kingdom,<br/>
 2354254,MM0LGR,David ,,,United Kingdom,<br/>
+2354255,MM0JZB,JOHN ,,,United Kingdom,<br/>
 2354259,MM6CMM,Calum ,,,United Kingdom,<br/>
 2354260,MM6JRP,John ,,,United Kingdom,<br/>
 2354261,GM1TCN,Thomas ,,,United Kingdom,<br/>
@@ -20710,6 +20727,7 @@
 2383198,OZ1AZA,Peter ,,,Denmark,<br/>
 2383199,OZ1HYG,Ivan H. ,,,Denmark,<br/>
 2383200,OZ2QL,Ole ,,,Denmark,<br/>
+2383201,OZ7BRI,Brian ,,,Denmark,<br/>
 2383666,OZ9XQ,Mogens ,,,Denmark,<br/>
 2384001,OZ3MAJ,Martin ,,,Denmark,Portable<br/>
 2384002,OZ3MAJ,Martin ,,,Denmark,Mobile<br/>
@@ -33252,6 +33270,7 @@
 3026174,VA6IW,Iain Wilson,Tomahawk,Alberta,Canada,DMR<br/>
 3026175,VE6LS,Lawrence Stephen Coker,Calgary,Alberta,Canada,DMR<br/>
 3026176,VE6EDF,Edward Fanthorpe,Sherwood Park,Alberta,Canada,DMR<br/>
+3026178,VE6RBN,Robin Greig,Irricana,Alberta,Canada,DMR<br/>
 3027001,VE7NWX,Emcomm N. Wstmnstr,New Westminster,British Columbia,Canada,Portable #1<br/>
 3027002,VE7NWX,Emcomm N. Wstmnstr,New Westminster,British Columbia,Canada,Portable #2<br/>
 3027003,VE7NWX,Emcomm N. Wstmnstr,New Westminster,British Columbia,Canada,Portable #3<br/>
@@ -33762,6 +33781,10 @@
 3101273,WX4DCS,Don C Salva,Theodore,Alabama,United States,DMR<br/>
 3101274,KI4SCY,Daniel P Imsand,Huntsville,Alabama,United States,DMR<br/>
 3101275,KN4DBI,Robert Rogers,Huntsville,Alabama,United States,DMR<br/>
+3101276,N4NQV,Spencer M Fowler,Auburn,Alabama,United States,DMR<br/>
+3101277,KF4IOL,Thomas M Endress,Montevallo,Alabama,United States,DMR<br/>
+3101278,KF4IOL,Thomas M Endress,Montevallo,Alabama,United States,DMR<br/>
+3101279,KI4PHT,Kimberley D Ingram,Jemison,Alabama,United States,DMR<br/>
 3102001,KL2AV,Brian Corty,Delta Junction ,Alaska,United States,Portable<br/>
 3102002,KL7PS,Paul Spatzek,Ancorage,Alaska,United States,Portable<br/>
 3102003,KL7RW,Ralph Wilkerson,Anchorage,Alaska,United States,Portable<br/>
@@ -38379,6 +38402,7 @@
 3109710,WA1LEI,Edwin W Rhodes,Orange,Connecticut,United States,DMR<br/>
 3109711,K1XS,Kenneth A Hanks,Naugatuck,Connecticut,United States,DMR<br/>
 3109712,K1MAL,Christopher F Altieri,Waterbury,Connecticut,United States,DMR<br/>
+3109713,K1FSY,David P Mckenzie,Waterbury,Connecticut,United States,DMR<br/>
 3110001,N2VRQ,David Larson,Bear,Delaware,United States,DMR<br/>
 3110002,KB3WQH,Robert Dobie,Newark,Delaware,United States,Portable<br/>
 3110003,KC3BNZ,Street, Earl,Claymont,Delaware,United States,Portable<br/>
@@ -39995,6 +40019,9 @@
 3113576,KK4C,William M Mcclatchey,Atlanta,Georgia,United States,CCS7<br/>
 3113577,WB4EAM ,James M Armfield,Atlanta,Georgia,United States,DMR<br/>
 3113578,K3GO,John T Smith,Roswell,Georgia,United States,DMR<br/>
+3113582,N4NEQ,Ralph W Fowler,Kennesaw,Georgia,United States,DMR<br/>
+3113583,N4YCI,Gregory F Holcomb,Atlanta,Georgia,United States,DMR<br/>
+3113584,W4FHL,Adrienne L Holcomb,Atlanta,Georgia,United States,DMR<br/>
 3115001,NH7YS,Tad Miura,Lihue,Hawaii,United States,Mobile<br/>
 3115002,KH6DQ,Jack Tsujimura,Honolulu,Hawaii,United States,Portable<br/>
 3115003,AH6PR,Mark Pascal,Kailua,Hawaii,United States,Portable<br/>
@@ -48073,6 +48100,7 @@
 3134706,KC2KHQ,Fidel Inguanzo,Newark,New Jersey,United States,DMR<br/>
 3134707,KF4DPS,Jimmy Reynolds,Hewitt,New Jersey,United States,DMR<br/>
 3134708,KG1LFD,Kacper Gozdek,Lyndhurst,New Jersey,United States,DMR<br/>
+3134709,WA2YSA,Robert V Webb,Northfield,New Jersey,United States,DMR<br/>
 3134710,W2RNB,Richard R Fink,Trenton,New Jersey,United States,DMR<br/>
 3134711,KD2HJQ,Steve Hartman,Hopatcong,New Jersey,United States,DMR<br/>
 3134712,WA2PIG,Ronnie L Miller,Wrightstown,New Jersey,United States,DMR<br/>
@@ -52713,6 +52741,7 @@
 3142736,KC3CAJ,Gerard J Maiolo,Linden,Pennsylvania,United States,DMR<br/>
 3142737,WC3T,Richard Hurd,Nazareth,Pennsylvania,United States,DMR<br/>
 3142738,AE3T,Howard M Sherer,Allentown,Pennsylvania,United States,DMR<br/>
+3142739,KB3TQR,Richard C Laubach,Hughesville,Pennsylvania,United States,DMR<br/>
 3144001,KB1ISZ,William Carlson,Smithfield,Rhode Island,United States,Hytera Portable<br/>
 3144002,KB1ISZ,William Carlson,Smithfield,Rhode Island,United States,Hytera Loaner<br/>
 3144003,KC2FMI,Joseph Miklovic,North Kingstown,Rhode Island,United States,Portable<br/>
@@ -57580,6 +57609,7 @@
 4251002,4Z1MB,Moshe Bukris,Givat Zeev,Jerusalem,Israel,DMR<br/>
 4251003,4Z1JS,Dr. Jack Shechter,Alfei Menashe,Jerusalem,Israel,DMR<br/>
 4251004,4Z1JJ,Richard Gussow,Modiin,Jerusalem,Israel,DMR<br/>
+4251005,4X5EB,Eli Bar,Jerusalem,Jerusalem,Israel,Other<br/>
 4252001,4Z1AB,Barak Amos,Tel Aviv,Tel Aviv,Israel,DMR<br/>
 4252002,4X4EB,Eitan Brogardi,Hod Hasharon,Tel Aviv,Israel,DMR<br/>
 4252003,4Z5YY,Alon Biron,Ramat Hasharon,Tel Aviv,Israel,DMR<br/>
@@ -57761,6 +57791,7 @@
 4401033,JL1ZRD,Kdn-Net Kanagawadigital,Ebina-City Kanagawa,Kanto,Japan,DMR<br/>
 4401034,JA1CCL,Yoshihiko Nonaka,Ebina-City,Kanto,Japan,DMR<br/>
 4401035,JG1NCB,Wisnu Widjaja,Ibaraki,Kanto,Japan,DMR<br/>
+4401036,JA1THJ,Hiro Namba,Sanmu City,Kanto,Japan,DMR<br/>
 4401037,JA2FYL,Hideo Fukuta,Tokyo,Kanto,Japan,DMR<br/>
 4401038,JH1BBG,Ryo Shimada,Sagamihara-Shi,Kanto,Japan,DMR<br/>
 4401039,JA1WTO,Kei Yoshihara,Chikusei,Kanto,Japan,DMR<br/>
@@ -58630,6 +58661,7 @@
 4661047,BM2NHC,Kai T. Chen,Taipei,Taipei,Taiwan,DMR<br/>
 4661048,BU2BF,Adam Shen,Taipei,Taipei,Taiwan,Club Fleet<br/>
 4661049,BM6GWW,Wang Yinche,Chinyi,Southern Taiwan,Taiwan,DMR<br/>
+4661050,BX7ABA,Huang Chi-Ruei,Kaohsiung,Southern Taiwan,Taiwan,DMR<br/>
 4661051,BM3INW,Meng Fan Chang,Taipei,Taipei,Taiwan,DMR<br/>
 4661052,BM1BXQ,Chang Bor Ching,Taipei,Taipei,Taiwan,DMR<br/>
 4661053,BM4KQQ,Zeng Jun Yu,Taichung,Central Taiwan,Taiwan,DMR<br/>
@@ -58737,6 +58769,7 @@
 5022012,9W2EAG,Joey Chan,Gorge Town,West Malaysia,Malaysia,DMR<br/>
 5022013,9W2BTJ,Ghee Oon Ooi,Bayan Lepas,West Malaysia,Malaysia,DMR<br/>
 5022014,9W2AA,Sharan-Jit Singh Shingar Singh ,Kuala Lumpur ,West Malaysia,Malaysia,DMR<br/>
+5022015,9W2FFZ,Muhd Farriz Ismail,Kuantan,West Malaysia,Malaysia,DMR<br/>
 5024001,9W2FKP,Abd Rahim Bin Abd Rahman,Seri Kembangan,West Malaysia (2),Malaysia,DMR<br/>
 5026001,9W2LHX,Amin Husni,Cyberjaya,East Malaysia,Malaysia,Portable<br/>
 5026002,9M6LK,Lawrence Khong,Kota Kinabalu,East Malaysia,Malaysia,DMR<br/>
@@ -59076,6 +59109,8 @@
 5052276,VK2KON,Con Thanopoulos,West Hoxton,New South Wales,Australia,DMR<br/>
 5052277,VK2FD,Lindsay Harvey,Parkes,New South Wales,Australia,DMR<br/>
 5052278,VK2MJM,Jeremy J Barbouttis,Pyrmont,New South Wales,Australia,CCS7<br/>
+5052280,VK2ASY,Kim Stevens,Orange Nsw,New South Wales,Australia,DMR<br/>
+5052281,VK2NIK,Nick Karabetsis,Newcastle,New South Wales,Australia,DMR<br/>
 5053001,VK3XDE,Paul Engler,Melbourne,Victoria,Australia,Mobile<br/>
 5053002,VK3TE,Peter Brennan,Karingal,Victoria,Australia,Portable<br/>
 5053003,VK3AJ,Peter Chaplin,Upwey,Victoria,Australia,Mobile<br/>
@@ -59227,6 +59262,7 @@
 5053151,VK3KLI,Craig Terry,Castlemaine,Victoria,Australia,DMR<br/>
 5053152,VK3CE,Ross Pittard,Bendigo,Victoria,Australia,DMR<br/>
 5053153,VK3AJA,Andy J Ashley,Shepparton,Victoria,Australia,DMR<br/>
+5053154,VK3JFK,Richard Hoskin,Gisborne, Vic 3437,Victoria,Australia,DMR<br/>
 5054001,VK4QF,Andrew Chapman,Toowoomba,Queensland,Australia,DMR<br/>
 5054002,VK4QF,Andrew Chapman,Toowoomba,Queensland,Australia,DMR<br/>
 5054003,VK4QF,Andrew Chapman,Toowoomba,Queensland,Australia,DMR<br/>
@@ -59536,6 +59572,8 @@
 5057034,VK7KPC,Peter C Dodd,Evandale, Tasmania,,Tasmania,Australia,DMR<br/>
 5057035,VK7PD,Peter Dowde,Trevallyn,,Tasmania,Australia,DMR<br/>
 5057038,VK7NRF,Bogdan Steven Podolski,Glenorchy,Tasmania,Australia,DMR<br/>
+5057039,VK7MAJ,Aj Tabart,Burnie,Tasmania,Australia,DMR<br/>
+5057040,VK7ZAC,Ac Cordwell,Launceston, Tas 7250,Tasmania,Australia,DMR<br/>
 5058001,VK8AA,David Burger,Darwin,Northern Territory,Australia,Portable<br/>
 5058002,VK8MT,Malcolm Good,Darwin,Northern Territory,Australia,CCS7<br/>
 5101002,YD0DIO,Amadio Nabiel Cirillo,Jakarta,Jakarta ,Indonesia,CCS7<br/>
@@ -60887,6 +60925,7 @@
 7301075,CA1CFF,Cesar Alfredo Flores,Copiapo,Atacama,Chile,DMR<br/>
 7301076,CE1UMN,Carlos Andres Soza Recabarren,Copiapo,Atacama,Chile,Other<br/>
 7301077,CA1USL,Gustavo Ulloa Salazar,Copiapo,Atacama,Chile,DMR<br/>
+7301078,CA1WGM,Williams Gonzalez Madrid,Copiapo. Region De A,Atacama,Chile,DMR<br/>
 7302001,CE2LS,Radio Club Of La Serena,La Serena,Cuarta,Chile,<br/>
 7302002,CE2NXW,Jerardo Peralta,La Serena,Elqui,Chile,Mobile<br/>
 7302003,CA2DMR,Ruben Dario Munoz,La Serena,Elqui,Chile,Mobile<br/>
