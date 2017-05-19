@@ -451,12 +451,12 @@ if __name__ == '__main__':
     local_subscriber_ids = mk_full_id_dict(PATH, LOCAL_SUB_FILE, 'subscriber')
     if local_subscriber_ids:
         logging.info('ID ALIAS MAPPER: local_subscriber_ids added to subscriber_ids dictionary')
-        subscriber_ids.update(local_ids)
+        subscriber_ids.update(local_subscriber_ids)
         
     local_peer_ids = mk_full_id_dict(PATH, LOCAL_PEER_FILE, 'subscriber')
     if local_peer_ids:
         logging.info('ID ALIAS MAPPER: local_peer_ids added peer_ids dictionary')
-        peer_ids.update(local_ids)
+        peer_ids.update(local_peer_ids)
     
     # Create Static Website index file
     index_html = get_template('index_template.html')
