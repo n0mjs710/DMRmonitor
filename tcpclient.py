@@ -129,6 +129,7 @@ def build_dmrlink_table():
                 active = '<td bgcolor="#FF0000">Disconnected</td>'
                 
             alias_list = get_alias_list(CONFIG[ipsc]['MASTER']['RADIO_ID'], peer_ids, 'CALLSIGN', 'CITY')
+            print(alias_list)
             alias = alias_list[1] + ', ' + alias_list[2]
             
             table += '<tr><td>{}</td><td>Master</td><td>{}</td><td>{}</td>{}<td>{}</td><td>{}</td><td>{}</td></tr>'.format(\
