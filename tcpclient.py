@@ -17,7 +17,7 @@ from time import time, strftime, localtime
 from cPickle import loads
 from binascii import b2a_hex as h
 from dmr_utils.utils import int_id, get_alias, try_download, mk_id_dict
-from os.path import getmtime 
+from os.path import getmtime
 
 from config import *
 from ipsc_const import *
@@ -129,7 +129,7 @@ def build_dmrlink_table():
                 active = '<td bgcolor="#FF0000">Disconnected</td>'
             
             table += '<tr><td>{}</td><td>Master</td><td>{}</td><td>{}</td>{}<td>{}</td><td>{}</td><td>{}</td></tr>'.format(\
-                    get_alias(CONFIG[ipsc]['MASTER']['RADIO_ID'], peer_ids),\
+                    ', '.join(get_alias_list(CONFIG[ipsc]['MASTER']['RADIO_ID'], peer_ids, 'CALLSIGN', 'CITY')),\
                     str(int_id(CONFIG[ipsc]['MASTER']['RADIO_ID'])).rjust(8,'0'),\
                     CONFIG[ipsc]['MASTER']['IP'],\
                     active,\
