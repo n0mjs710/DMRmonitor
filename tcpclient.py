@@ -127,9 +127,12 @@ def build_dmrlink_table():
                 active = '<td bgcolor="#00FF00">Connected</td>'
             elif stat['CONNECTED'] == False:
                 active = '<td bgcolor="#FF0000">Disconnected</td>'
+                
+            alias_list = get_alias_list(CONFIG[ipsc]['MASTER']['RADIO_ID'], peer_ids, 'CALLSIGN', 'CITY')
+            alias = alias_list[1] + ', ' + alias_list[2]
             
             table += '<tr><td>{}</td><td>Master</td><td>{}</td><td>{}</td>{}<td>{}</td><td>{}</td><td>{}</td></tr>'.format(\
-                    ', '.join(get_alias_list(CONFIG[ipsc]['MASTER']['RADIO_ID'], peer_ids, 'CALLSIGN', 'CITY')),\
+                    alias,\
                     str(int_id(CONFIG[ipsc]['MASTER']['RADIO_ID'])).rjust(8,'0'),\
                     CONFIG[ipsc]['MASTER']['IP'],\
                     active,\
@@ -146,8 +149,11 @@ def build_dmrlink_table():
                 elif stat['CONNECTED'] == False:
                     active = '<td bgcolor="#FF0000">Disconnected</td>'
                 
+                alias_list = get_alias_list(peer, peer_ids, 'CALLSIGN', 'CITY')
+                alias = alias_list[1] + ', ' + alias_list[2]
+                
                 table += '<tr><td>{}</td><td>Peer</td><td>{}</td><td>{}</td>{}<td>n/a</td><td>{}</td><td>n/a</td></tr>'.format(\
-                    get_alias(peer, peer_ids),\
+                    alias,\
                     str(int_id(peer)).rjust(8,'0'),\
                     CONFIG[ipsc]['PEERS'][peer]['IP'],\
                     active,\
@@ -162,9 +168,12 @@ def build_dmrlink_table():
                 elif stat['CONNECTED'] == False:
                     active = '<td bgcolor="#FF0000">Disconnected</td>'
                 
+                alias_list = get_alias_list(peer, peer_ids, 'CALLSIGN', 'CITY')
+                alias = alias_list[1] + ', ' + alias_list[2]
+                
                 if peer != CONFIG[ipsc]['LOCAL']['RADIO_ID']:
                     table += '<tr><td>{}</td><td>Peer</td><td>{}</td><td>{}</td>{}<td>{}</td><td>{}</td><td>{}</td></tr>'.format(\
-                        get_alias(peer, peer_ids),\
+                        alias,\
                         str(int_id(peer)).rjust(8,'0'),\
                         CONFIG[ipsc]['PEERS'][peer]['IP'],\
                         active,\
