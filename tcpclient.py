@@ -57,6 +57,9 @@ def get_template(_file):
 def alias_string(_id, _dict):
     alias = get_alias(_id, _dict, 'CALLSIGN', 'CITY', 'STATE')
     if type(alias) == list:
+        for x,item in enumerate(alias):
+            if item == None:
+                alias.pop(x)
         return ', '.join(alias)
     else:
         return alias
@@ -453,7 +456,7 @@ if __name__ == '__main__':
         logging.info('ID ALIAS MAPPER: local_subscriber_ids added to subscriber_ids dictionary')
         subscriber_ids.update(local_subscriber_ids)
         
-    local_peer_ids = mk_full_id_dict(PATH, LOCAL_PEER_FILE, 'subscriber')
+    local_peer_ids = mk_full_id_dict(PATH, LOCAL_PEER_FILE, 'peer')
     if local_peer_ids:
         logging.info('ID ALIAS MAPPER: local_peer_ids added peer_ids dictionary')
         peer_ids.update(local_peer_ids)
