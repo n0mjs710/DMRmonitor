@@ -1,3 +1,12 @@
+---
+### FOR SUPPORT, DISCUSSION, GETTING INVOLVED ###
+
+Please join the DVSwitch group at groups.io for online forum support, discussion, and to become part of the development team.
+
+DVSwitch@groups.io 
+
+---
+
 **Socket-Based Reporting for DMRlink**
 
 Over the years, the biggest request recevied for DMRlinkn (other than call-routing/bridging tools) has been web-based diagnostics and/or statistics for the program.
