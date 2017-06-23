@@ -81,6 +81,7 @@ NACK = {
 }
 
 TYPE = {
+    '\x00': '',
     '\x30': 'Private Data Set-Up',
     '\x31': 'Group Data Set-Up',
     '\x32': 'Private CSBK Set-Up',
