@@ -1,0 +1,51 @@
+<h3>DMRlink Status Table:</h3>
+<table style="width:100%; font: 10pt arial, sans-serif">
+    <colgroup>
+        <col style="width: 10%" />
+        <col style="width: 20%" />
+        <col style="width: 5%" />
+        <col style="width: 10%" />
+        <col style="width: 10%" />
+        <col style="width: 15%" />
+        <col style="width: 15%" />
+        <col style="width: 15%" />
+    </colgroup>
+    <tr style="width:100%; font: 10pt arial, sans-serif; background-color:#666666; color:white">
+        <th>IPSC</th>
+        <th>Device ID/Alias<br>IP - Keep Alive TX/RX/Lost</th>
+        <th>Timeslot</th>
+        <th>Status</th>
+        <th>Traffic</br>Type</th>
+        <th>Source</br>Subscriber</th>
+        <th>Source</br>Peer</th>
+        <th>Destination</th>
+    </tr>
+    
+    {% for _ipsc, _ipsc_data in _table.iteritems() %}
+    <tr>
+        <td style="{{ 'font-weight:bold;color:#0f0fff' if _table[_ipsc]['MASTER'] == True }}" rowspan="{{ _table[_ipsc]['PEERS']|length * 2 }}">{{_ipsc}}</td>
+        
+        {% for _peer, _peer_data in _table[_ipsc]['PEERS'].iteritems() %}
+        <td style="{{ 'font-weight:bold;color:#0f0fff' if _table[_ipsc]['PEERS'][_peer]['TYPE'] == 'Master' }} {{ ';background-color:#ff0000' if _table[_ipsc]['PEERS'][_peer]['CONNECTED'] == False else ';background-color:#00ff00' }}" rowspan="2">{{ _table[_ipsc]['PEERS'][_peer]['RADIO_ID'] }}, {{ _table[_ipsc]['PEERS'][_peer]['ALIAS'] }}
+            <br><div style="font: 8pt arial, sans-serif">{{ _table[_ipsc]['PEERS'][_peer]['IP'] }} - {{ _table[_ipsc]['PEERS'][_peer]['KEEP_ALIVES_SENT'] }} / {{ _table[_ipsc]['PEERS'][_peer]['KEEP_ALIVES_RECEIVED'] }} / {{ _table[_ipsc]['PEERS'][_peer]['KEEP_ALIVES_MISSED'] }}</div></td>
+        
+        <td style="background-color:{{ _table[_ipsc]['PEERS'][_peer][1]['COLOR'] }}">TS1</td>
+        <td style="background-color:{{ _table[_ipsc]['PEERS'][_peer][1]['COLOR'] }}">{{ _table[_ipsc]['PEERS'][_peer][1]['STATUS'] }}</td>
+        <td style="background-color:{{ _table[_ipsc]['PEERS'][_peer][1]['COLOR'] }}">{{ _table[_ipsc]['PEERS'][_peer][1]['TYPE'] }}</td>
+        <td style="background-color:{{ _table[_ipsc]['PEERS'][_peer][1]['COLOR'] }}">{{ _table[_ipsc]['PEERS'][_peer][1]['SRC_SUB'] }}</td>
+        <td style="background-color:{{ _table[_ipsc]['PEERS'][_peer][1]['COLOR'] }}">{{ _table[_ipsc]['PEERS'][_peer][1]['SRC_PEER'] }}</td>
+        <td style="background-color:{{ _table[_ipsc]['PEERS'][_peer][1]['COLOR'] }}">{{ _table[_ipsc]['PEERS'][_peer][1]['DEST'] }}</td>
+        
+        <tr>
+        <td style="background-color:{{ _table[_ipsc]['PEERS'][_peer][2]['COLOR'] }}">TS2</td>
+        <td style="background-color:{{ _table[_ipsc]['PEERS'][_peer][2]['COLOR'] }}">{{ _table[_ipsc]['PEERS'][_peer][2]['STATUS'] }}</td>
+        <td style="background-color:{{ _table[_ipsc]['PEERS'][_peer][2]['COLOR'] }}">{{ _table[_ipsc]['PEERS'][_peer][2]['TYPE'] }}</td>
+        <td style="background-color:{{ _table[_ipsc]['PEERS'][_peer][2]['COLOR'] }}">{{ _table[_ipsc]['PEERS'][_peer][2]['SRC_SUB'] }}</td>
+        <td style="background-color:{{ _table[_ipsc]['PEERS'][_peer][2]['COLOR'] }}">{{ _table[_ipsc]['PEERS'][_peer][2]['SRC_PEER'] }}</td>
+        <td style="background-color:{{ _table[_ipsc]['PEERS'][_peer][2]['COLOR'] }}">{{ _table[_ipsc]['PEERS'][_peer][2]['DEST'] }}</td>
+        </tr>
+        {% endfor %}  
+    </tr>
+    {% endfor %}        
+</table>
+<p></p>

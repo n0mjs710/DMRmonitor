@@ -1,0 +1,39 @@
+<hr>
+<h3>Bridge Group Status Tables:</h3>
+{% for _bridge, _bridge_data in _table.iteritems() %}
+<table style="width:100%; font: 10pt arial, sans-serif">
+    <colgroup>
+        <col style="width: 10%" />
+        <col style="width: 5%"  />
+        <col style="width: 5%"  />
+        <col style="width: 10%" />
+        <col style="width: 10%" />
+        <col style="width: 10%" />
+        <col style="width: 25%" />
+        <col style="width: 25%" />
+    </colgroup>
+    <h4>Conference Bridge: {{ _bridge }}</h4>
+    <tr style="width:100%; font: 10pt arial, sans-serif; background-color:#666666; color:white">
+        <th>System</th>
+        <th>Slot</th>
+        <th>TGID</th>
+        <th>Status</th>
+        <th>Timeout</th>
+        <th>Timeout Action</th>
+        <th>Connect TGIDs</th>
+        <th>Disconnect TGIDs</th>
+    </tr>
+    {% for system, _system_data in _table[_bridge].iteritems() %}
+    <tr>
+        <td>{{ system }}</td>
+        <td>{{ _table[_bridge][system]['TS'] }}</td>
+        <td>{{ _table[_bridge][system]['TGID'] }}</td>
+        <td style="background-color:{{ _table[_bridge][system]['COLOR'] }}">{{ _table[_bridge][system]['ACTIVE'] }}</td>
+        <td>{{ _table[_bridge][system]['EXP_TIME'] }}</td>
+        <td>{{ _table[_bridge][system]['TO_ACTION'] }}</td>
+        <td>{{ _table[_bridge][system]['TRIG_ON'] }}</td>
+        <td>{{ _table[_bridge][system]['TRIG_OFF'] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endfor %}
