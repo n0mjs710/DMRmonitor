@@ -372,8 +372,21 @@ def process_message(_message):
         #dashboard_server.broadcast('l' + repr(_message[1:]))
     elif opcode == OPCODE['BRDG_EVENT']:
         logging.info('BRIDGE EVENT: {}'.format(repr(_message[1:])))
-        dashboard_server.broadcast('l' + repr(_message[1:]))
-        LOGBUF.append(_message[1:])
+        p = _message[1:].split(",")
+        if p[0] == 'GROUP VOICE':
+            if p[1] == 'END':
+                log_message = '{} {}:   System: {}; IPSC Peer: {} - {}; Subscriber: {} - {}; TS: {}; TGID: {}; Duration: {}s'.format(p[0], p[1], p[2], p[4], alias_string(int(p[4]), peer_ids), p[5], alias_string(int(p[5]), subscriber_ids), p[6], p[7], p[8])
+            elif p[1] == 'START':
+                log_message = '{} {}: System: {}; IPSC Peer: {} - {}; Subscriber: {} - {}; TS: {}; TGID: {}'.format(p[0], p[1], p[2], p[4], alias_string(int(p[4]), peer_ids), p[5], alias_string(int(p[5]), subscriber_ids), p[6], p[7])
+            elif p[1] == 'END WITHOUT MATCHING START':
+                log_message = '{} {} on IPSC System {}: IPSC Peer: {} - {}; Subscriber: {} - {}; TS: {}; TGID: {}'.format(p[0], p[1], p[2], p[4], alias_string(int(p[4]), peer_ids), p[5], alias_string(int(p[5]), subscriber_ids), p[6], p[7])
+            else:
+                log_message = 'UNKNOWN GROUP VOICE LOG MESSAGE'
+        else:
+            log_message = 'UNKNOWN LOG MESSAGE'
+            
+        dashboard_server.broadcast('l' + log_message)
+        LOGBUF.append(log_message)
     else:
         logging.debug('got unknown opcode: {}, message: {}'.format(repr(opcode), repr(_message[1:])))
 

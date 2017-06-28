@@ -113,6 +113,7 @@ SEC = {
 STATUS = {
     '\x01': 'Active',
     '\x02': 'End',
+    '\x03': 'unknown',
     '\x05': 'TS In Use',
     '\x08': 'RPT Disabled',
     '\x09': 'RF Interference',
