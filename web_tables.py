@@ -54,6 +54,7 @@ from time import time, strftime, localtime
 from cPickle import loads
 from binascii import b2a_hex as h
 from os.path import getmtime
+from collections import deque
 
 # Web templating environment
 from jinja2 import Environment, PackageLoader, select_autoescape
@@ -86,6 +87,7 @@ BTABLE      = {}
 BTABLE['BRIDGES'] = {}
 BRIDGES_RX  = ''
 CONFIG_RX   = ''
+LOGBUF      = deque(100*[''], 100)
 RED         = '#ff0000'
 GREEN       = '#00ff00'
 BLUE        = '#0000ff'
@@ -371,6 +373,7 @@ def process_message(_message):
     elif opcode == OPCODE['BRDG_EVENT']:
         logging.info('BRIDGE EVENT: {}'.format(repr(_message[1:])))
         dashboard_server.broadcast('l' + repr(_message[1:]))
+        LOGBUF.append(_message[1:])
     else:
         logging.debug('got unknown opcode: {}, message: {}'.format(repr(opcode), repr(_message[1:])))
 
@@ -435,6 +438,9 @@ class dashboard(WebSocketServerProtocol):
         self.factory.register(self)
         self.sendMessage('d' + str(dtemplate.render(_table=CTABLE)))
         self.sendMessage('b' + str(btemplate.render(_table=BTABLE['BRIDGES'])))
+        for _message in LOGBUF:
+            if _message:
+                self.sendMessage('l' + repr(_message))
 
     def onMessage(self, payload, isBinary):
         if isBinary:
