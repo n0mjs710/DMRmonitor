@@ -227,6 +227,8 @@ def build_dmrlink_table(_config, _stats_table):
         _stats_table[_ipsc] = {}
         _stats_table[_ipsc]['PEERS'] = {}
         _stats_table[_ipsc]['MASTER'] = _config[_ipsc]['LOCAL']['MASTER_PEER']
+        _stats_table[_ipsc]['RADIO_ID'] = int_id(_config[_ipsc]['LOCAL']['RADIO_ID'])
+        _stats_table[_ipsc]['IP'] = _config[_ipsc]['LOCAL']['IP']
         _stats_peers = _stats_table[_ipsc]['PEERS']
         
         # if this peer is the master

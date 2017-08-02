@@ -23,7 +23,7 @@
     
     {% for _ipsc, _ipsc_data in _table.iteritems() %}
     <tr>
-        <td style="{{ 'font-weight:bold;color:#0f0fff' if _table[_ipsc]['MASTER'] == True }}" rowspan="{{ _table[_ipsc]['PEERS']|length * 2 }}">{{_ipsc}}</td>
+        <td style="{{ 'font-weight:bold;color:#0f0fff' if _table[_ipsc]['MASTER'] == True }}" rowspan="{{ _table[_ipsc]['PEERS']|length * 2 }}">{{_ipsc}}<br><div style="font: 8pt arial, sans-serif">{{ _table[_ipsc]['RADIO_ID'] }} / {{ _table[_ipsc]['IP'] }}</div></td>
         
         {% for _peer, _peer_data in _table[_ipsc]['PEERS'].iteritems() %}
         <td style="{{ 'font-weight:bold;color:#0f0fff' if _table[_ipsc]['PEERS'][_peer]['TYPE'] == 'Master' }} {{ ';background-color:#ff0000' if _table[_ipsc]['PEERS'][_peer]['CONNECTED'] == False else ';background-color:#00ff00' }}" rowspan="2">{{ _table[_ipsc]['PEERS'][_peer]['RADIO_ID'] }}, {{ _table[_ipsc]['PEERS'][_peer]['ALIAS'] }}
