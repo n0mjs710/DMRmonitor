@@ -387,7 +387,24 @@ def process_message(_message):
             else:
                 log_message = '{}: UNKNOWN GROUP VOICE LOG MESSAGE'.format(_now)
         else:
-            log_message = '{}: UNKNOWN LOG MESSAGE'.format(_now)
+            nfo = []
+            for cnt in p:
+                tnfo = cnt.split(":")
+                for cnfo in tnfo:
+                    nfo.append(cnfo.strip())
+            hdr = nfo[0].split(")")
+            hdr[1] = hdr[1].strip()
+
+            if hdr[1] == "GROUP VOICE START":
+                log_message = '{}: {}: System: {}); IPSC Peer: {} - {}; Subscriber: {} - {}; TS: {}; TGID: {}'.format(_now,hdr[1],hdr[0],nfo[3],alias_string(int(nfo[3]), peer_ids), nfo[5], alias_string(int(nfo[5]), subscriber_ids),nfo[7],nfo[9])
+            elif hdr[1] == "GROUP VOICE END":
+                dur = nfo[9].split(" ")
+                log_message = '{}: {}:   System: {}); IPSC Peer: {} - {}; Subscriber: {} - {}; TS: {}; TGID: {}; Duration: {}'.format(_now,hdr[1],hdr[0],nfo[3],alias_string(int(nfo[3]), peer_ids), nfo[5], alias_string(int(nfo[5]), subscriber_ids),nfo[7],dur[0],nfo[10])
+            else:
+                log_message = '{}: UNKNOWN LOG MESSAGE'.format(_now)
+
+
+            
             
         dashboard_server.broadcast('l' + log_message)
         LOGBUF.append(log_message)
