@@ -379,7 +379,7 @@ def process_message(_message):
         p = _message[1:].split(",")
         if p[0] == 'GROUP VOICE':
             if p[1] == 'END':
-                log_message = '{}: {} {}: System: {}; IPSC Peer: {} - {}; Subscriber: {} - {}; TS: {}; TGID: {}; Duration: {}s'.format(_now, p[0], p[1], p[2], p[4], alias_string(int(p[4]), peer_ids), p[5], alias_string(int(p[5]), subscriber_ids), p[6], p[7], p[8])
+                log_message = '{}: {} {}:   System: {}; IPSC Peer: {} - {}; Subscriber: {} - {}; TS: {}; TGID: {}; Duration: {}s'.format(_now, p[0], p[1], p[2], p[4], alias_string(int(p[4]), peer_ids), p[5], alias_string(int(p[5]), subscriber_ids), p[6], p[7], p[8])
             elif p[1] == 'START':
                 log_message = '{}: {} {}: System: {}; IPSC Peer: {} - {}; Subscriber: {} - {}; TS: {}; TGID: {}'.format(_now, p[0], p[1], p[2], p[4], alias_string(int(p[4]), peer_ids), p[5], alias_string(int(p[5]), subscriber_ids), p[6], p[7])
             elif p[1] == 'END WITHOUT MATCHING START':
@@ -399,7 +399,7 @@ def process_message(_message):
                 log_message = '{}: {}: System: {}); IPSC Peer: {} - {}; Subscriber: {} - {}; TS: {}; TGID: {}'.format(_now,hdr[1],hdr[0],nfo[3],alias_string(int(nfo[3]), peer_ids), nfo[5], alias_string(int(nfo[5]), subscriber_ids),nfo[7],nfo[9])
             elif hdr[1] == "GROUP VOICE END":
                 dur = nfo[9].split(" ")
-                log_message = '{}: {}: System: {}); IPSC Peer: {} - {}; Subscriber: {} - {}; TS: {}; TGID: {}; Duration: {}'.format(_now,hdr[1],hdr[0],nfo[3],alias_string(int(nfo[3]), peer_ids), nfo[5], alias_string(int(nfo[5]), subscriber_ids),nfo[7],dur[0],nfo[10])
+                log_message = '{}: {}:   System: {}); IPSC Peer: {} - {}; Subscriber: {} - {}; TS: {}; TGID: {}; Duration: {}'.format(_now,hdr[1],hdr[0],nfo[3],alias_string(int(nfo[3]), peer_ids), nfo[5], alias_string(int(nfo[5]), subscriber_ids),nfo[7],dur[0],nfo[10])
             else:
                 log_message = '{}: UNKNOWN LOG MESSAGE'.format(_now)
 
