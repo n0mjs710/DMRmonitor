@@ -511,13 +511,13 @@ class web_server(Resource):
 
 
 if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO)
+    logging.basicConfig(level=logging.INFO,filename = (PATH + 'logfile.log'), filemode='a')
     
     # Download alias files
-    result = try_download('./', 'peer_ids.csv', PEER_URL, (FILE_RELOAD * 86400))
+    result = try_download(PATH, 'peer_ids.csv', PEER_URL, (FILE_RELOAD * 86400))
     logging.info(result)
    
-    result = try_download('./', 'subscriber_ids.csv', SUBSCRIBER_URL, (FILE_RELOAD * 86400))
+    result = try_download(PATH, 'subscriber_ids.csv', SUBSCRIBER_URL, (FILE_RELOAD * 86400))
     logging.info(result)
     
     # Make Alias Dictionaries
@@ -553,7 +553,7 @@ if __name__ == '__main__':
     btemplate = env.get_template('bridge_table.html')
     
     # Create Static Website index file
-    index_html = get_template('index_template.html')
+    index_html = get_template(PATH + 'index_template.html')
     index_html = index_html.replace('<<<system_name>>>', REPORT_NAME)
     
     # Start update loop

@@ -7,7 +7,7 @@ FREQUENCY       = 10                    # Frequency to push updates to web clien
 WEB_SERVER_PORT = 8080                  # Has to be above 1024 if you're not running as root
 
 # Files and stuff for loading alias files for mapping numbers to names
-PATH            = './'
+PATH            = './'                          # MUST END IN '/'
 PEER_FILE       = 'peer_ids.csv'                # Will auto-download from DMR-MARC
 SUBSCRIBER_FILE = 'subscriber_ids.csv'          # Will auto-download from DMR-MARC
 TGID_FILE       = 'talkgroup_ids.csv'           # User provided, should be in "integer TGID, TGID name" format
