@@ -102,7 +102,7 @@ def get_template(_file):
 
 # Alias string processor
 def alias_string(_id, _dict):
-    alias = get_alias(_id, _dict, 'callsign', 'city', 'state')
+    alias = get_alias(_id, _dict, 'CALLSIGN', 'CITY', 'STATE')
     if type(alias) == list:
         for x,item in enumerate(alias):
             if item == None:
@@ -514,31 +514,31 @@ if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO,filename = (PATH + 'logfile.log'), filemode='a')
     
     # Download alias files
-    result = try_download(PATH, 'peer_ids.json', PEER_URL, (FILE_RELOAD * 86400))
+    result = try_download(PATH, 'peer_ids.csv', PEER_URL, (FILE_RELOAD * 86400))
     logging.info(result)
    
-    result = try_download(PATH, 'subscriber_ids.json', SUBSCRIBER_URL, (FILE_RELOAD * 86400))
+    result = try_download(PATH, 'subscriber_ids.csv', SUBSCRIBER_URL, (FILE_RELOAD * 86400))
     logging.info(result)
     
     # Make Alias Dictionaries
-    peer_ids = mk_full_id_dict(PATH, PEER_FILE)
+    peer_ids = mk_full_id_dict(PATH, PEER_FILE, 'peer')
     if peer_ids:
         logging.info('ID ALIAS MAPPER: peer_ids dictionary is available')
         
-    subscriber_ids = mk_full_id_dict(PATH, SUBSCRIBER_FILE)
+    subscriber_ids = mk_full_id_dict(PATH, SUBSCRIBER_FILE, 'subscriber')
     if subscriber_ids:
         logging.info('ID ALIAS MAPPER: subscriber_ids dictionary is available')
     
-    talkgroup_ids = mk_full_id_dict(PATH, TGID_FILE)
+    talkgroup_ids = mk_full_id_dict(PATH, TGID_FILE, 'tgid')
     if talkgroup_ids:
         logging.info('ID ALIAS MAPPER: talkgroup_ids dictionary is available')
     
-    local_subscriber_ids = mk_full_id_dict(PATH, LOCAL_SUB_FILE)
+    local_subscriber_ids = mk_full_id_dict(PATH, LOCAL_SUB_FILE, 'subscriber')
     if local_subscriber_ids:
         logging.info('ID ALIAS MAPPER: local_subscriber_ids added to subscriber_ids dictionary')
         subscriber_ids.update(local_subscriber_ids)
         
-    local_peer_ids = mk_full_id_dict(PATH, LOCAL_PEER_FILE)
+    local_peer_ids = mk_full_id_dict(PATH, LOCAL_PEER_FILE, 'peer')
     if local_peer_ids:
         logging.info('ID ALIAS MAPPER: local_peer_ids added peer_ids dictionary')
         peer_ids.update(local_peer_ids)
