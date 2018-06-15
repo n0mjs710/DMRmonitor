@@ -14,5 +14,5 @@ TGID_FILE       = 'talkgroup_ids.csv'           # User provided, should be in "i
 LOCAL_SUB_FILE  = 'local_subscriber_ids.csv'    # User provided (optional, leave '' if you don't use it), follow the format of DMR-MARC
 LOCAL_PEER_FILE = 'local_peer_ids.csv'          # User provided (optional, leave '' if you don't use it), follow the format of DMR-MARC
 FILE_RELOAD     = 7                             # Number of days before we reload DMR-MARC database files
-PEER_URL        = 'http://www.dmr-marc.net/cgi-bin/trbo-database/datadump.cgi?table=repeaters&format=csv&header=0'
-SUBSCRIBER_URL  = 'http://www.dmr-marc.net/cgi-bin/trbo-database/datadump.cgi?table=users&format=csv&header=0'
+PEER_URL        = 'http://dmr-marc.net/static/rptrs.csv'
+SUBSCRIBER_URL  = 'http://dmr-marc.net/static/users.csv'
