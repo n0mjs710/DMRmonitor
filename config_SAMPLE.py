@@ -16,3 +16,7 @@ LOCAL_PEER_FILE = 'local_peer_ids.csv'          # User provided (optional, leave
 FILE_RELOAD     = 7                             # Number of days before we reload DMR-MARC database files
 PEER_URL        = 'http://dmr-marc.net/static/rptrs.csv'
 SUBSCRIBER_URL  = 'http://dmr-marc.net/static/users.csv'
+
+# Settings for log files
+LOG_PATH        = PATH
+LOG_NAME        = 'webtables.log'

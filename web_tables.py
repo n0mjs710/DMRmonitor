@@ -33,7 +33,7 @@ CON_APP: True
 
 from __future__ import print_function
 
-# Standard modules 
+# Standard modules
 import logging
 import sys
 
@@ -535,7 +535,7 @@ class web_server(Resource):
 
 
 if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO,filename = (PATH + 'logfile.log'), filemode='a')
+    logging.basicConfig(level=logging.INFO,filename = (LOG_PATH + LOG_NAME), filemode='a')
     
     # Download alias files
     result = try_download(PATH, 'peer_ids.csv', PEER_URL, (FILE_RELOAD * 86400))
