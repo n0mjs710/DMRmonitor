@@ -14,9 +14,8 @@ TGID_FILE       = 'talkgroup_ids.csv'           # User provided, should be in "i
 LOCAL_SUB_FILE  = 'local_subscriber_ids.csv'    # User provided (optional, leave '' if you don't use it), follow the format of DMR-MARC
 LOCAL_PEER_FILE = 'local_peer_ids.csv'          # User provided (optional, leave '' if you don't use it), follow the format of DMR-MARC
 FILE_RELOAD     = 7                             # Number of days before we reload DMR-MARC database files
-PEER_URL        = 'http://dmr-marc.net/static/rptrs.csv'
-SUBSCRIBER_URL  = 'http://dmr-marc.net/static/users.csv'
-
+PEER_URL        = 'https://www.radioid.net/static/rptrs.csv'
+SUBSCRIBER_URL  = 'https://www.radioid.net/static/users.csv'
 # Settings for log files
 LOG_PATH        = PATH
 LOG_NAME        = 'webtables.log'
