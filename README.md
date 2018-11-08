@@ -9,7 +9,7 @@ DVSwitch@groups.io
 
 **Socket-Based Reporting for DMRlink**
 
-Over the years, the biggest request recevied for DMRlinkn (other than call-routing/bridging tools) has been web-based diagnostics and/or statistics for the program.
+Over the years, the biggest request recevied for DMRlink (other than call-routing/bridging tools) has been web-based diagnostics and/or statistics for the program.
 
 I strongly disagree with including the amount of overhead this would require inside DMRlink -- which still runs nicely on very modest resources. That it does this, and is in Python is a point of pride for me... Just let me have this one, ok? What I have done is added some hooks to DMRlink, which will be expanded over time, whereby it listens on a TCP socket and provides the raw data necessary for a "web dashboard", or really any external logging or statisitcs gathering program.
 
