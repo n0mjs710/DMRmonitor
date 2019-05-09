@@ -14,8 +14,8 @@ TGID_FILE       = 'talkgroup_ids.json'           # User provided, should be in "
 LOCAL_SUB_FILE  = 'local_subscriber_ids.json'    # User provided (optional, leave '' if you don't use it), follow the format of DMR-MARC
 LOCAL_PEER_FILE = 'local_peer_ids.json'          # User provided (optional, leave '' if you don't use it), follow the format of DMR-MARC
 FILE_RELOAD     = 7                             # Number of days before we reload DMR-MARC database files
-PEER_URL        = 'https://www.radioid.net/api/dmr/repeater/?country=united%20states'
-SUBSCRIBER_URL  = 'https://www.radioid.net/api/dmr/user/?country=united%20states'
+PEER_URL        = 'https://www.radioid.net/static/rptrs.json'
+SUBSCRIBER_URL  = 'https://www.radioid.net/static/users.json'
 # Settings for log files
 LOG_PATH        = PATH
 LOG_NAME        = 'webtables.log'
